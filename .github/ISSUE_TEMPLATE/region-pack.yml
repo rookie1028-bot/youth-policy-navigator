@@ -1,0 +1,28 @@
+---
+name: Region pack request
+description: Suggest a city, school, or community policy pack to add.
+title: "Region pack: "
+labels: [enhancement, data]
+body:
+  - type: input
+    id: region
+    attributes:
+      label: Region or community
+      placeholder: 서울 / 경기 / 부산 / university name / youth center
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Useful official links
+      description: Add official portals, notices, CSV/API pages, or public documents.
+      placeholder: |
+        - https://...
+        - https://...
+    validations:
+      required: true
+  - type: textarea
+    id: users
+    attributes:
+      label: Who would this help?
+      placeholder: Job seekers, students, independent young adults, youth center counselors, etc.

@@ -1,7 +1,7 @@
 {
   "name": "youth-policy-navigator",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 17542",
@@ -14,5 +14,15 @@
   },
   "devDependencies": {
     "vitest": "latest"
-  }
+  },
+  "description": "Local-first youth policy discovery and action checklist navigator for Korea.",
+  "keywords": [
+    "youth-policy",
+    "civic-tech",
+    "krds",
+    "local-first",
+    "policy-navigator",
+    "accessibility",
+    "open-source"
+  ]
 }

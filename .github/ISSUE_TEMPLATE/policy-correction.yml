@@ -1,0 +1,31 @@
+---
+name: Policy data correction
+description: Fix policy title, deadline, channel URL, benefit, or next action.
+title: "Policy correction: "
+labels: [data, good first issue]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for improving Youth Policy Navigator. Please prefer official sources.
+  - type: input
+    id: policy
+    attributes:
+      label: Policy name or ID
+      placeholder: 서울 청년 월세 지원 / seoul-youth-rent
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Official source URL
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should be corrected?
+      placeholder: Deadline, URL, benefit text, action checklist, etc.
+    validations:
+      required: true

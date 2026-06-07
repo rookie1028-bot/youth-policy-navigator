@@ -1,8 +1,32 @@
-# 청년정책 내비게이터
+# Youth Policy Navigator / 청년정책 내비게이터
 
-KRDS 기반으로 만든 로컬 청년정책 탐색 MVP입니다. 나이·지역·현재 상황·소득 느낌·관심 키워드를 입력하면 샘플 청년정책을 적합도 순으로 보여주고, 관심 정책을 localStorage에 저장한 뒤 Markdown으로 복사할 수 있습니다.
+A local-first, KRDS-inspired web app that helps young people in Korea turn scattered youth-policy information into a prioritized action list.
 
-## 실행
+> Status: early-stage public-interest OSS MVP. The current dataset is a curated seed dataset; the project is designed to grow into an open template for policy discovery, eligibility triage, and AI-assisted civic-service workflows.
+
+## Why this exists
+
+Youth policies in Korea are spread across national, city, and local portals. The hard part is not only finding a policy; it is deciding **what to check first**, **which proof documents to prepare**, and **how to keep the next action visible**.
+
+This project explores a small but reusable pattern:
+
+```text
+citizen profile → policy scoring → next action → saved markdown checklist
+```
+
+It is intentionally local-first and lightweight so students, job seekers, independent young adults, civic hackers, and AI builders can fork it, replace the seed data, and adapt it to their own region or community.
+
+## Features
+
+- Profile-based recommendation: age, region, current situation, income band, and interest keywords
+- Local scoring engine with human-readable recommendation reasons
+- Policy filters by category, region, status, and search query
+- Saved policy list stored in browser `localStorage`
+- Markdown export for counseling notes, Tolaria/PKM records, or follow-up checklists
+- KRDS-inspired accessibility basics: Korean `lang`, skip link, landmarks, labels, focus states, semantic cards
+- Test-covered core logic using Vitest
+
+## Demo / local usage
 
 ```bash
 npm install
@@ -11,35 +35,54 @@ npm run build
 npm run dev
 ```
 
-- Local URL: http://127.0.0.1:17542
-- 저장 키: `youth-policy-navigator:v1:saved`
+Local URL:
 
-## 구현 범위
+```text
+http://127.0.0.1:17542
+```
 
-- 조건 입력: 나이, 지역, 상황, 소득, 키워드
-- 정책 필터: 검색어, 분야, 지역, 상태
-- 추천 점수: 나이/지역/상황/소득/키워드 기반 로컬 scoring
-- 관심 정책 저장: 브라우저 localStorage
-- 상담/Tolaria용 Markdown 복사
-- KRDS 기본 접근성: `lang=ko`, skip link, header/nav/main/footer, label-control binding, focus ring, semantic card structure
+## Project structure
 
-## KRDS Component Mapping
+```text
+src/policy-core.js          # seed policies, profile normalization, scoring, filtering, markdown export
+src/app.js                  # UI rendering and localStorage interactions
+src/styles.css              # KRDS-inspired UI styling
+tests/policy-core.test.js   # core recommendation and export tests
+```
 
-- Header / Navigation: 상단 서비스명 + 주요 anchor nav
-- Form layout / Input / Select: 조건 입력과 필터 카드
-- Badge / Tag: 분야, 적합도, 추천 이유
-- Structured list: 정책 메타 정보 `dl`
-- Button / Link button: CTA, 저장, 신청 채널
-- Help panel: 서비스 요약/주의 문구
-- Critical guidance: 공식 자격 판정은 신청 채널 최종 확인 안내
+## Current scope
 
-## v0 한계
+The MVP contains a small seed dataset covering housing, jobs, savings, education, culture, and local support policies. It does **not** replace official eligibility checks.
 
-정책 데이터는 실시간 API가 아니라 샘플 seed입니다. 실제 공고/마감/자격 조건은 공식 채널에서 최종 확인해야 합니다.
+Official applications must still be completed through each policy's official channel.
 
-## 다음 확장 후보
+## Roadmap
 
-1. 정책 API/크롤링 연동 또는 CSV import
-2. 지역별 상세 정책 데이터 확장
-3. 신청서류 체크리스트와 캘린더 리마인더
-4. 상담 로그/Tolaria 직접 저장 Electron 브릿지
+- [ ] Add CSV/JSON import for local governments, schools, and community organizations
+- [ ] Add policy data validation and stale-deadline detection
+- [ ] Add region packs for Seoul, Gyeonggi, Busan, Incheon, and national programs
+- [ ] Add document checklist generation per policy
+- [ ] Add multilingual support for international students and migrant youth
+- [ ] Add AI-assisted policy summarization and form-preparation workflows
+- [ ] Publish reusable templates for other public-service navigators
+
+## Maintainer
+
+Maintained by [Rookie / 권예람](https://github.com/rookie1028-bot), an AI-native creator building local-first tools, public-service prototypes, and record-based life operating systems.
+
+## Contributing
+
+Contributions are welcome, especially:
+
+- policy seed data corrections
+- region-specific policy packs
+- accessibility improvements
+- KRDS component mapping improvements
+- tests for scoring and filtering edge cases
+- documentation for non-developer users
+
+Please see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+
+## License
+
+MIT License. See [`LICENSE`](./LICENSE).
